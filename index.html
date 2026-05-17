@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XytrixTriada • Присоединяйся</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    .title-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      padding: 8px 12px;
+    }
+
+    .nav-btn {
+      padding: 10px 28px;
+      border-radius: 9999px;
+      transition: all 0.4s ease;
+      font-weight: 500;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.1); }
+    .nav-btn.active {
+      background: white;
+      color: black;
+      font-weight: 600;
+    }
+
+    .hero-bg {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,10,10,0.85), rgba(17,17,17,0.9));
+      background-image: url('https://i.pinimg.com/1200x/d4/37/7d/d4377d6236e1c41f6ab4abf382e63ca0.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+
+    .section {
+      position: fixed;
+      inset: 0;
+      opacity: 0;
+      transform: scale(0.92) translateY(30px);
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+    .section.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+      z-index: 10;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      transition: all 0.4s ease;
+    }
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-6px);
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+  <!-- Navigation -->
+  <nav>
+    <div class="flex items-center gap-2 text-sm font-medium">
+      <button onclick="showSection(0)" class="nav-btn active" id="nav-0">Главная</button>
+      <button onclick="showSection(1)" class="nav-btn" id="nav-1">FAQ</button>
+      <button onclick="showSection(2)" class="nav-btn" id="nav-2">Контакты</button>
+    </div>
+  </nav>
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 bg-black flex items-center justify-center z-[9999]">
+    <div class="text-center">
+      <h1 class="title-font text-6xl mb-8">XYTRIXTRIADA</h1>
+      <div class="spinner mx-auto"></div>
+    </div>
+  </div>
+
+  <!-- Главная -->
+  <section id="section-0" class="section active hero-bg">
+    <div class="relative z-10 text-center px-6">
+      <!-- Динамический онлайн -->
+      <div id="online-widget" class="glass inline-flex items-center gap-3 rounded-full px-6 py-2 mb-8 border border-white/20">
+        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+        <span class="text-sm font-medium">Загрузка...</span>
+      </div>
+
+      <h1 class="title-font text-7xl md:text-8xl font-bold tracking-tighter neon-text mb-4">
+        Xytrix<br>Triada
+      </h1>
+      <p class="text-2xl text-zinc-300 mb-12">Элитное комьюнити с атмосферой</p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://discord.gg/3mGEU5MCZF" target="_blank"
+           class="px-10 py-5 bg-white text-black font-semibold rounded-2xl flex items-center gap-3 hover:scale-105 transition-all">
+          <i class="fa-brands fa-discord text-xl"></i>
+          ПРИСОЕДИНИТЬСЯ
+        </a>
+        <button onclick="copyInvite()" 
+                class="px-10 py-5 border border-white/50 hover:border-white rounded-2xl transition-all glass">
+          Скопировать инвайт
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="section-1" class="section hero-bg">
+    <div class="relative z-10 max-w-4xl mx-auto px-6 w-full">
+      <h2 class="text-6xl font-bold title-font mb-16 text-center">FAQ</h2>
+      <div class="space-y-6">
+        <div class="glass-card rounded-3xl p-7">
+          <h3 class="text-xl font-semibold mb-3">Как присоединиться к серверу?</h3>
+          <p class="text-zinc-300">Нажми кнопку «Присоединиться» или перейди по ссылке: <span class="text-blue-400">discord.gg/3mGEU5MCZF</span></p>
+        </div>
+        <div class="glass-card rounded-3xl p-7">
+          <h3 class="text-xl font-semibold mb-3">Есть ли правила на сервере?</h3>
+          <p class="text-zinc-300">Да. Правила находятся в канале #правила. Главное — уважение к людям, без спама и токсичности.</p>
+        </div>
+        <div class="glass-card rounded-3xl p-7">
+          <h3 class="text-xl font-semibold mb-3">Сколько лет можно быть на сервере?</h3>
+          <p class="text-zinc-300">Рекомендуемый возраст — 13+. 18+ контент доступен в закрытых каналах.</p>
+        </div>
+        <div class="glass-card rounded-3xl p-7">
+          <h3 class="text-xl font-semibold mb-3">Как получить цветную роль?</h3>
+          <p class="text-zinc-300">Будь активным в чате и мероприятиях — администрация выдаёт роли активным участникам.</p>
+        </div>
+        <div class="glass-card rounded-3xl p-7">
+          <h3 class="text-xl font-semibold mb-3">Можно ли стримить и играть вместе?</h3>
+          <p class="text-zinc-300">Да! Для этого есть специальные голосовые каналы и раздел #поиск-соклановцев.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="section-2" class="section hero-bg">
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-5xl font-bold title-font mb-16 tracking-wider">КОНТАКТЫ</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="glass-card p-8 rounded-3xl text-center">
+          <i class="fa-brands fa-discord text-5xl mb-4 text-[#5865F2]"></i>
+          <h3 class="font-semibold text-lg">DISCORD</h3>
+          <p class="text-blue-400">@xdkkefa</p>
+        </div>
+        <div class="glass-card p-8 rounded-3xl text-center">
+          <i class="fa-brands fa-telegram text-5xl mb-4 text-[#229ED9]"></i>
+          <h3 class="font-semibold text-lg">TELEGRAM</h3>
+          <p class="text-blue-400">@xdkkefa</p>
+        </div>
+        <div class="glass-card p-8 rounded-3xl text-center">
+          <i class="fa-brands fa-vk text-5xl mb-4 text-[#4C75A3]"></i>
+          <h3 class="font-semibold text-lg">VK</h3>
+          <p class="text-zinc-400">Скоро</p>
+        </div>
+        <div class="glass-card p-8 rounded-3xl text-center">
+          <i class="fa-solid fa-envelope text-5xl mb-4 text-red-500"></i>
+          <h3 class="font-semibold text-lg">GMAIL</h3>
+          <p class="text-zinc-400">Скоро</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    let current = 0;
+
+    function showSection(n) {
+      if (n === current) return;
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(`section-${n}`).classList.add('active');
+      document.getElementById(`nav-${n}`).classList.add('active');
+      current = n;
+    }
+
+    function copyInvite() {
+      navigator.clipboard.writeText("https://discord.gg/3mGEU5MCZF");
+      alert("✅ Инвайт скопирован!");
+    }
+
+    // Динамический онлайн с твоим ID сервера
+    async function updateOnline() {
+      try {
+        const res = await fetch('https://discord.com/api/guilds/1491089113619632272/widget.json');
+        const data = await res.json();
+        
+        const widget = document.getElementById('online-widget');
+        widget.innerHTML = `
+          <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+          <span class="text-sm font-medium">ONLINE • ${data.presence_count} участников</span>
+        `;
+      } catch (e) {
+        console.log("Не удалось загрузить онлайн");
+      }
+    }
+
+    // Запуск при загрузке
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').style.opacity = '0';
+      setTimeout(() => document.getElementById('preloader').style.display = 'none', 700);
+      
+      updateOnline();
+      setInterval(updateOnline, 30000); // Обновление каждые 30 секунд
+    });
+  </script>
+</body>
+</html>
